@@ -1,546 +1,1338 @@
-"use client"
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات البياتي</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #1a1a1a; /* Pale black background */
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import {
-  Car,
-  Truck,
-  Wrench,
-  GraduationCap,
-  UserCheck,
-  Heart,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  MessageCircle,
-  Instagram,
-  Linkedin,
-  Globe,
-  Code,
-  Stethoscope,
-  Languages,
-  Users,
-  Award,
-  BookOpen,
-  Briefcase,
-} from "lucide-react"
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-export default function AlBayatiServices() {
-  const [activeSection, setActiveSection] = useState("home")
+        section {
+            padding: 80px 0;
+            display: none; /* Hidden by default */
+        }
 
-  const services = [
-    {
-      title: "العلاج الطبيعي",
-      description: "خدمات العلاج الطبيعي المتخصصة والمهنية",
-      icon: Heart,
-      gradient: "from-red-500 to-pink-600",
-      bgImage: "bg-gradient-to-br from-red-50 to-pink-50",
-    },
-    {
-      title: "النقل بالسيارات",
-      description: "خدمات النقل الآمنة والمريحة بالسيارات",
-      icon: Car,
-      gradient: "from-blue-500 to-cyan-600",
-      bgImage: "bg-gradient-to-br from-blue-50 to-cyan-50",
-    },
-    {
-      title: "النقل بالتوك توك",
-      description: "خدمات النقل السريعة والاقتصادية",
-      icon: Truck,
-      gradient: "from-green-500 to-emerald-600",
-      bgImage: "bg-gradient-to-br from-green-50 to-emerald-50",
-    },
-    {
-      title: "صيانة الأجهزة الإلكترونية",
-      description: "صيانة جميع الأجهزة المنزلية والهواتف",
-      icon: Wrench,
-      gradient: "from-orange-500 to-amber-600",
-      bgImage: "bg-gradient-to-br from-orange-50 to-amber-50",
-    },
-    {
-      title: "شركة البياتي للنقل",
-      description: "شركة نقل متخصصة وموثوقة",
-      icon: Truck,
-      gradient: "from-purple-500 to-violet-600",
-      bgImage: "bg-gradient-to-br from-purple-50 to-violet-50",
-    },
-    {
-      title: "دورات طبية تعليمية",
-      description: "دورات طبية احترافية وحديثة",
-      icon: GraduationCap,
-      gradient: "from-indigo-500 to-blue-600",
-      bgImage: "bg-gradient-to-br from-indigo-50 to-blue-50",
-    },
-    {
-      title: "مدرسين خصوصيين",
-      description: "مدرسين مؤهلين لجميع المراحل التعليمية",
-      icon: UserCheck,
-      gradient: "from-teal-500 to-cyan-600",
-      bgImage: "bg-gradient-to-br from-teal-50 to-cyan-50",
-    },
-  ]
+        section.active {
+            display: block;
+        }
 
-  const skills = [
-    { name: "البرمجة", icon: Code, level: 90 },
-    { name: "الطب", icon: Stethoscope, level: 85 },
-    { name: "اللغة الإنجليزية", icon: Languages, level: 88 },
-    { name: "مهارات التواصل", icon: Users, level: 92 },
-    { name: "القيادة", icon: Award, level: 87 },
-    { name: "التعليم", icon: BookOpen, level: 89 },
-  ]
+        h1, h2, h3, h4 {
+            color: #f0f0f0;
+            margin-bottom: 20px;
+        }
 
-  const socialLinks = [
-    {
-      name: "Telegram",
-      handle: "@ha_20_ha",
-      icon: MessageCircle,
-      color: "bg-blue-500 hover:bg-blue-600",
-      url: "https://t.me/ha_20_ha",
-    },
-    {
-      name: "Facebook",
-      handle: "صفحة الفيسبوك",
-      icon: Facebook,
-      color: "bg-blue-600 hover:bg-blue-700",
-      url: "#",
-    },
-    {
-      name: "Instagram",
-      handle: "انستغرام",
-      icon: Instagram,
-      color: "bg-pink-500 hover:bg-pink-600",
-      url: "#",
-    },
-    {
-      name: "LinkedIn",
-      handle: "لينكد إن",
-      icon: Linkedin,
-      color: "bg-blue-700 hover:bg-blue-800",
-      url: "#",
-    },
-  ]
+        p {
+            color: #c0c0c0;
+        }
 
-  const renderHome = () => (
-    <div className="space-y-12">
-      {/* Hero Section */}
-      <div className="text-center py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl text-white">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          خدمات البياتي
-        </h1>
-        <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-          نقدم مجموعة شاملة من الخدمات المتخصصة والمهنية لتلبية جميع احتياجاتكم
-        </p>
-        <div className="mt-8">
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 text-lg"
-          >
-            استكشف خدماتنا
-          </Button>
-        </div>
-      </div>
+        /* Navigation Bar */
+        nav {
+            background-color: #0f0f0f;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
 
-      {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => {
-          const IconComponent = service.icon
-          return (
-            <Card
-              key={index}
-              className={`group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${service.bgImage} border-0 overflow-hidden`}
-            >
-              <CardContent className="p-8 text-center">
-                <div
-                  className={`w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r ${service.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <IconComponent className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-800">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-                <Button
-                  variant="outline"
-                  className="mt-6 border-2 hover:bg-gray-800 hover:text-white transition-colors duration-300 bg-transparent"
-                >
-                  اعرف المزيد
-                </Button>
-              </CardContent>
-            </Card>
-          )
-        })}
-      </div>
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
 
-      {/* Stats Section */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-12 text-white">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-4xl font-bold text-blue-400 mb-2">500+</div>
-            <div className="text-gray-300">عميل راضٍ</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-green-400 mb-2">7</div>
-            <div className="text-gray-300">خدمات متخصصة</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-purple-400 mb-2">2+</div>
-            <div className="text-gray-300">سنوات خبرة</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-orange-400 mb-2">24/7</div>
-            <div className="text-gray-300">دعم متواصل</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
 
-  const renderAbout = () => (
-    <div className="space-y-12">
-      {/* Personal Info */}
-      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-12 text-white">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="w-64 h-64 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-6xl font-bold">
-            HB
-          </div>
-          <div className="flex-1 text-center lg:text-right">
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              حسام البياتي
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              طالب طب في جامعة المستنصرية، مبرمج متخصص، ومقدم خدمات متنوعة. أعمل كمندوب منذ سنتين وأسعى لتقديم أفضل
-              الخدمات للعملاء.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <Badge className="bg-blue-500 text-white px-4 py-2 text-sm">طالب طب</Badge>
-              <Badge className="bg-green-500 text-white px-4 py-2 text-sm">مبرمج</Badge>
-              <Badge className="bg-purple-500 text-white px-4 py-2 text-sm">مندوب خبير</Badge>
-              <Badge className="bg-orange-500 text-white px-4 py-2 text-sm">مقدم خدمات</Badge>
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: #c0c0c0;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            color: #ffffff;
+            background-color: #2a2a2a;
+        }
+
+        .nav-button.active {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(to right, #1a1a1a, #2a2a2a, #1a1a1a);
+            border-radius: 25px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .hero-button {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: #ffffff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background-color: #2a2a2a;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .service-card.red-pink::before { background: linear-gradient(to bottom right, #ef4444, #ec4899); }
+        .service-card.blue-cyan::before { background: linear-gradient(to bottom right, #3b82f6, #06b6d4); }
+        .service-card.green-emerald::before { background: linear-gradient(to bottom right, #22c55e, #10b981); }
+        .service-card.orange-amber::before { background: linear-gradient(to bottom right, #f97316, #f59e0b); }
+        .service-card.purple-violet::before { background: linear-gradient(to bottom right, #a855f7, #8b5cf6); }
+        .service-card.indigo-blue::before { background: linear-gradient(to bottom right, #6366f1, #3b82f6); }
+        .service-card.teal-cyan::before { background: linear-gradient(to bottom right, #14b8a6, #06b6d4); }
+
+        .service-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            transform: scale(1.1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: #ffffff;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #f0f0f0;
+        }
+
+        .service-card p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+        }
+
+        .service-button {
+            background: none;
+            border: 2px solid #4a4a4a;
+            color: #c0c0c0;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-button:hover {
+            background-color: #4a4a4a;
+            color: #ffffff;
+            border-color: #4a4a4a;
+        }
+
+        /* Specific Service Icon Backgrounds */
+        .service-icon-wrapper.red-pink { background: linear-gradient(to right, #ef4444, #ec4899); }
+        .service-icon-wrapper.blue-cyan { background: linear-gradient(to right, #3b82f6, #06b6d4); }
+        .service-icon-wrapper.green-emerald { background: linear-gradient(to right, #22c55e, #10b981); }
+        .service-icon-wrapper.orange-amber { background: linear-gradient(to right, #f97316, #f59e0b); }
+        .service-icon-wrapper.purple-violet { background: linear-gradient(to right, #a855f7, #8b5cf6); }
+        .service-icon-wrapper.indigo-blue { background: linear-gradient(to right, #6366f1, #3b82f6); }
+        .service-icon-wrapper.teal-cyan { background: linear-gradient(to right, #14b8a6, #06b6d4); }
+
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(to right, #2a2a2a, #1a1a1a);
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item div:first-child {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-item div:last-child {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+        }
+
+        .stat-item:nth-child(1) div:first-child { color: #60a5fa; } /* blue-400 */
+        .stat-item:nth-child(2) div:first-child { color: #4ade80; } /* green-400 */
+        .stat-item:nth-child(3) div:first-child { color: #c084fc; } /* purple-400 */
+        .stat-item:nth-child(4) div:first-child { color: #fbbf24; } /* orange-400 */
+
+        /* About Section */
+        .about-section h2, .skills-section h3, .experience-section h3 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #f0f0f0;
+        }
+
+        .personal-info {
+            background: linear-gradient(to right, #1a1a1a, #2a2a2a, #1a1a1a);
+            border-radius: 25px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .personal-info .avatar {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .personal-info-text {
+            text-align: center;
+        }
+
+        .personal-info-text h2 {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .personal-info-text p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .badge {
+            background-color: #4a4a4a;
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .badge.blue { background-color: #3b82f6; }
+        .badge.green { background-color: #22c55e; }
+        .badge.purple { background-color: #8b5cf6; }
+        .badge.orange { background-color: #f97316; }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .skill-card {
+            background-color: #2a2a2a;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .skill-icon {
+            font-size: 50px;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .skill-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #4a4a4a;
+            border-radius: 10px;
+            height: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+        }
+
+        .skill-card span {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background-color: #2a2a2a;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .experience-icon {
+            font-size: 25px;
+            color: #ffffff;
+        }
+
+        .experience-icon-wrapper.blue { background-color: #3b82f6; }
+        .experience-icon-wrapper.green { background-color: #22c55e; }
+        .experience-icon-wrapper.purple { background-color: #8b5cf6; }
+
+        .experience-text h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 5px;
+        }
+
+        .experience-text p {
+            color: #b0b0b0;
+        }
+
+        /* Contact Section */
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+        }
+
+        .contact-section > p {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+        }
+
+        .social-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .social-card {
+            background-color: #2a2a2a;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover .social-icon-wrapper {
+            transform: scale(1.1);
+        }
+
+        .social-icon {
+            font-size: 35px;
+            color: #ffffff;
+        }
+
+        .social-icon-wrapper.telegram { background-color: #0088cc; }
+        .social-icon-wrapper.facebook { background-color: #1877f2; }
+        .social-icon-wrapper.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-icon-wrapper.linkedin { background-color: #0a66c2; }
+
+        .social-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .social-card p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+        }
+
+        .social-button {
+            background: none;
+            border: 2px solid #4a4a4a;
+            color: #c0c0c0;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .social-button:hover {
+            background-color: #4a4a4a;
+            color: #ffffff;
+            border-color: #4a4a4a;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: linear-gradient(to right, #1a1a1a, #2a2a2a, #1a1a1a);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .contact-form-container h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #f0f0f0;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .contact-form-container input,
+        .contact-form-container textarea {
+            width: calc(100% - 30px);
+            padding: 15px;
+            border-radius: 15px;
+            border: none;
+            background-color: #3a3a3a;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-container input::placeholder,
+        .contact-form-container textarea::placeholder {
+            color: #a0a0a0;
+        }
+
+        .contact-form-container input:focus,
+        .contact-form-container textarea:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+
+        .contact-form-container textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: #ffffff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Quick Contact Info */
+        .quick-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .quick-contact-card {
+            background-color: #2a2a2a;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .quick-contact-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .quick-contact-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .quick-contact-card p {
+            color: #b0b0b0;
+        }
+
+        .quick-contact-card:nth-child(1) .quick-contact-icon { color: #3b82f6; }
+        .quick-contact-card:nth-child(2) .quick-contact-icon { color: #22c55e; }
+        .quick-contact-card:nth-child(3) .quick-contact-icon { color: #8b5cf6; }
+
+        /* About Site Section */
+        .about-site-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+        }
+
+        .about-site-section > p {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+        }
+
+        .about-site-content {
+            background: linear-gradient(to right, #1a1a1a, #2a2a2a, #1a1a1a);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .about-site-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-site-text p {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        .about-site-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: #3a3a3a;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+        }
+
+        .feature-card:nth-child(1) .feature-icon { color: #60a5fa; }
+        .feature-card:nth-child(2) .feature-icon { color: #4ade80; }
+        .feature-card:nth-child(3) .feature-icon { color: #c084fc; }
+
+        .placeholder-content {
+            background-color: #2a2a2a;
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px dashed #4a4a4a;
+            margin-top: 60px;
+        }
+
+        .placeholder-content h3 {
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .placeholder-content p {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        .placeholder-content .note {
+            background-color: #3a3a3a;
+            border-radius: 15px;
+            padding: 30px;
+            font-style: italic;
+            color: #b0b0b0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f0f0f;
+            color: #c0c0c0;
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        footer h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social-link:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-social-link.telegram { background-color: #0088cc; }
+        .footer-social-link.facebook { background-color: #1877f2; }
+        .footer-social-link.instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+        .footer-social-link.linkedin { background-color: #0a66c2; }
+
+        .footer-bottom {
+            border-top: 1px solid #3a3a3a;
+            margin-top: 40px;
+            padding-top: 40px;
+            text-align: center;
+            color: #808080;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .personal-info {
+                flex-direction: row;
+                text-align: right;
+            }
+            .personal-info-text {
+                text-align: right;
+            }
+            .badges {
+                justify-content: flex-start;
+            }
+            .form-group.grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .about-site-content {
+                flex-direction: row;
+            }
+            .about-site-text {
+                flex: 1;
+            }
+            .about-site-features-grid {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none; /* Hide nav links on small screens, could add a hamburger menu */
+            }
+            .navbar-content {
+                justify-content: center; /* Center logo if no nav links */
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .hero-button {
+                font-size: 1rem;
+                padding: 12px 30px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .personal-info .avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+            .personal-info-text h2 {
+                font-size: 2rem;
+            }
+            .personal-info-text p {
+                font-size: 1rem;
+            }
+            .skills-grid, .social-links-grid, .quick-contact-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-container input,
+            .contact-form-container textarea {
+                width: calc(100% - 30px); /* Adjust for padding */
+            }
+            .contact-form-container h3 {
+                font-size: 1.8rem;
+            }
+            .about-site-section h2 {
+                font-size: 2rem;
+            }
+            .about-site-section > p {
+                font-size: 1rem;
+            }
+            .about-site-text h3 {
+                font-size: 1.8rem;
+            }
+            .about-site-text p {
+                font-size: 1rem;
+            }
+            .placeholder-content h3 {
+                font-size: 1.5rem;
+            }
+            .placeholder-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container navbar-content">
+            <div class="logo">خدمات البياتي</div>
+            <div class="nav-links">
+                <button class="nav-button active" data-section="home">الرئيسية</button>
+                <button class="nav-button" data-section="about">نبذة تعريفية</button>
+                <button class="nav-button" data-section="contact">تواصل معنا</button>
+                <button class="nav-button" data-section="about-site">حول الموقع</button>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Skills */}
-      <div>
-        <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">المهارات والخبرات</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skill, index) => {
-            const IconComponent = skill.icon
-            return (
-              <Card key={index} className="hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-8 text-center">
-                  <IconComponent className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-                  <h4 className="text-lg font-semibold mb-4 text-gray-800">{skill.name}</h4>
-                  <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
-                    <div
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
-                  </div>
-                  <span className="text-sm text-gray-600">{skill.level}%</span>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Experience */}
-      <div className="bg-gray-50 rounded-3xl p-12">
-        <h3 className="text-3xl font-bold text-center mb-12 text-gray-800">الخبرة العملية</h3>
-        <div className="space-y-8">
-          <div className="flex items-start gap-6">
-            <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Stethoscope className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h4 className="text-xl font-semibold text-gray-800 mb-2">طالب طب - جامعة المستنصرية</h4>
-              <p className="text-gray-600">دراسة الطب والتخصص في المجال الطبي مع التركيز على التميز الأكاديمي</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-6">
-            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Briefcase className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h4 className="text-xl font-semibold text-gray-800 mb-2">مندوب - سنتان من الخبرة</h4>
-              <p className="text-gray-600">خبرة واسعة في التعامل مع العملاء وتقديم الخدمات المتميزة</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-6">
-            <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <Code className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h4 className="text-xl font-semibold text-gray-800 mb-2">مبرمج ومطور</h4>
-              <p className="text-gray-600">تطوير التطبيقات والمواقع الإلكترونية باستخدام أحدث التقنيات</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-
-  const renderContact = () => (
-    <div className="space-y-12">
-      <div className="text-center">
-        <h2 className="text-4xl font-bold mb-6 text-gray-800">تواصل معنا</h2>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          نحن هنا لخدمتكم على مدار الساعة. تواصلوا معنا عبر القنوات التالية
-        </p>
-      </div>
-
-      {/* Contact Methods */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {socialLinks.map((link, index) => {
-          const IconComponent = link.icon
-          return (
-            <Card key={index} className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div
-                  className={`w-16 h-16 mx-auto mb-6 rounded-full ${link.color} flex items-center justify-center transition-transform duration-300 hover:scale-110`}
-                >
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">{link.name}</h3>
-                <p className="text-gray-600 mb-4">{link.handle}</p>
-                <Button
-                  variant="outline"
-                  className="w-full hover:bg-gray-800 hover:text-white transition-colors duration-300 bg-transparent"
-                  onClick={() => window.open(link.url, "_blank")}
-                >
-                  تواصل الآن
-                </Button>
-              </CardContent>
-            </Card>
-          )
-        })}
-      </div>
-
-      {/* Contact Form */}
-      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-12">
-        <div className="max-w-2xl mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-8 text-white">أرسل رسالة</h3>
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="text"
-                placeholder="الاسم الكامل"
-                className="w-full p-4 rounded-xl border-0 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              />
-              <input
-                type="email"
-                placeholder="البريد الإلكتروني"
-                className="w-full p-4 rounded-xl border-0 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              />
-            </div>
-            <input
-              type="text"
-              placeholder="الموضوع"
-              className="w-full p-4 rounded-xl border-0 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-            <textarea
-              placeholder="الرسالة"
-              rows={6}
-              className="w-full p-4 rounded-xl border-0 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
-            ></textarea>
-            <Button
-              size="lg"
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-4 text-lg"
-            >
-              إرسال الرسالة
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Contact Info */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="text-center p-8 bg-blue-50 rounded-2xl">
-          <Phone className="w-12 h-12 mx-auto mb-4 text-blue-600" />
-          <h4 className="text-lg font-semibold mb-2 text-gray-800">اتصل بنا</h4>
-          <p className="text-gray-600">+964 XXX XXX XXXX</p>
-        </div>
-
-        <div className="text-center p-8 bg-green-50 rounded-2xl">
-          <Mail className="w-12 h-12 mx-auto mb-4 text-green-600" />
-          <h4 className="text-lg font-semibold mb-2 text-gray-800">راسلنا</h4>
-          <p className="text-gray-600">info@albayati.com</p>
-        </div>
-
-        <div className="text-center p-8 bg-purple-50 rounded-2xl">
-          <MapPin className="w-12 h-12 mx-auto mb-4 text-purple-600" />
-          <h4 className="text-lg font-semibold mb-2 text-gray-800">موقعنا</h4>
-          <p className="text-gray-600">بغداد، العراق</p>
-        </div>
-      </div>
-    </div>
-  )
-
-  const renderAboutSite = () => (
-    <div className="space-y-12">
-      <div className="text-center">
-        <h2 className="text-4xl font-bold mb-6 text-gray-800">حول الموقع</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          موقع خدمات البياتي هو منصة شاملة تهدف إلى تقديم مجموعة متنوعة من الخدمات المتخصصة والمهنية
-        </p>
-      </div>
-
-      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-12 text-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              رؤيتنا
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              نسعى لأن نكون الخيار الأول للعملاء في الحصول على خدمات متميزة وموثوقة في جميع المجالات التي نقدمها.
-            </p>
-
-            <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              مهمتنا
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              تقديم خدمات عالية الجودة تلبي احتياجات عملائنا وتتجاوز توقعاتهم من خلال فريق متخصص ومتفان.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            <div className="bg-white/10 rounded-2xl p-6">
-              <Globe className="w-8 h-8 text-blue-400 mb-4" />
-              <h4 className="text-xl font-semibold mb-2">خدمات شاملة</h4>
-              <p className="text-gray-300">نقدم مجموعة واسعة من الخدمات لتلبية جميع احتياجاتكم</p>
-            </div>
-
-            <div className="bg-white/10 rounded-2xl p-6">
-              <Award className="w-8 h-8 text-green-400 mb-4" />
-              <h4 className="text-xl font-semibold mb-2">جودة عالية</h4>
-              <p className="text-gray-300">نلتزم بأعلى معايير الجودة في جميع خدماتنا</p>
-            </div>
-
-            <div className="bg-white/10 rounded-2xl p-6">
-              <Users className="w-8 h-8 text-purple-400 mb-4" />
-              <h4 className="text-xl font-semibold mb-2">فريق متخصص</h4>
-              <p className="text-gray-300">فريق من المتخصصين ذوي الخبرة والكفاءة العالية</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Placeholder for future content */}
-      <div className="bg-gray-50 rounded-3xl p-12 text-center">
-        <h3 className="text-2xl font-bold mb-6 text-gray-800">المزيد من المعلومات</h3>
-        <p className="text-gray-600 text-lg mb-8">هذا القسم جاهز لإضافة المزيد من المعلومات حول الموقع والخدمات</p>
-        <div className="bg-white rounded-2xl p-8 border-2 border-dashed border-gray-300">
-          <p className="text-gray-500 italic">"سيتم ملء هذا القسم لاحقاً بالمعلومات الإضافية التي تريد إضافتها"</p>
-        </div>
-      </div>
-    </div>
-  )
-
-  return (
-    <div className="min-h-screen bg-gray-100" dir="rtl">
-      {/* Navigation */}
-      <nav className="bg-gray-900 shadow-2xl sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-8 space-x-reverse">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                خدمات البياتي
-              </div>
-            </div>
-
-            <div className="hidden md:flex space-x-8 space-x-reverse">
-              {[
-                { id: "home", label: "الرئيسية" },
-                { id: "about", label: "نبذة تعريفية" },
-                { id: "contact", label: "تواصل معنا" },
-                { id: "about-site", label: "حول الموقع" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveSection(item.id)}
-                  className={`px-6 py-3 rounded-full transition-all duration-300 font-medium ${
-                    activeSection === item.id
-                      ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
-                      : "text-gray-300 hover:text-white hover:bg-gray-800"
-                  }`}
-                >
-                  {item.label}
+            <!-- Mobile menu button placeholder -->
+            <div class="mobile-menu-button" style="display: none;">
+                <button class="nav-button">
+                    <i class="fas fa-bars"></i>
                 </button>
-              ))}
             </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button variant="ghost" className="text-white">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </Button>
-            </div>
-          </div>
         </div>
-      </nav>
+    </nav>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {activeSection === "home" && renderHome()}
-        {activeSection === "about" && renderAbout()}
-        {activeSection === "contact" && renderContact()}
-        {activeSection === "about-site" && renderAboutSite()}
-      </main>
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="active">
+            <div class="hero-section">
+                <h1>خدمات البياتي</h1>
+                <p>نقدم مجموعة شاملة من الخدمات المتخصصة والمهنية لتلبية جميع احتياجاتكم</p>
+                <button class="hero-button">استكشف خدماتنا</button>
+            </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="services-grid">
+                <div class="service-card red-pink">
+                    <div class="service-icon-wrapper red-pink">
+                        <i class="fas fa-heartbeat service-icon"></i>
+                    </div>
+                    <h3>العلاج الطبيعي</h3>
+                    <p>خدمات العلاج الطبيعي المتخصصة والمهنية</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+                <div class="service-card blue-cyan">
+                    <div class="service-icon-wrapper blue-cyan">
+                        <i class="fas fa-car service-icon"></i>
+                    </div>
+                    <h3>النقل بالسيارات</h3>
+                    <p>خدمات النقل الآمنة والمريحة بالسيارات</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+                <div class="service-card green-emerald">
+                    <div class="service-icon-wrapper green-emerald">
+                        <i class="fas fa-truck service-icon"></i>
+                    </div>
+                    <h3>النقل بالتوك توك</h3>
+                    <p>خدمات النقل السريعة والاقتصادية</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+                <div class="service-card orange-amber">
+                    <div class="service-icon-wrapper orange-amber">
+                        <i class="fas fa-wrench service-icon"></i>
+                    </div>
+                    <h3>صيانة الأجهزة الإلكترونية</h3>
+                    <p>صيانة جميع الأجهزة المنزلية والهواتف</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+                <div class="service-card purple-violet">
+                    <div class="service-icon-wrapper purple-violet">
+                        <i class="fas fa-building service-icon"></i>
+                    </div>
+                    <h3>شركة البياتي للنقل</h3>
+                    <p>شركة نقل متخصصة وموثوقة</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+                <div class="service-card indigo-blue">
+                    <div class="service-icon-wrapper indigo-blue">
+                        <i class="fas fa-graduation-cap service-icon"></i>
+                    </div>
+                    <h3>دورات طبية تعليمية</h3>
+                    <p>دورات طبية احترافية وحديثة</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+                <div class="service-card teal-cyan">
+                    <div class="service-icon-wrapper teal-cyan">
+                        <i class="fas fa-user-check service-icon"></i>
+                    </div>
+                    <h3>مدرسين خصوصيين</h3>
+                    <p>مدرسين مؤهلين لجميع المراحل التعليمية</p>
+                    <button class="service-button">اعرف المزيد</button>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div>500+</div>
+                        <div>عميل راضٍ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div>7</div>
+                        <div>خدمات متخصصة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div>2+</div>
+                        <div>سنوات خبرة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div>24/7</div>
+                        <div>دعم متواصل</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="personal-info">
+                <div class="avatar">HB</div>
+                <div class="personal-info-text">
+                    <h2>حسام البياتي</h2>
+                    <p>طالب طب في جامعة المستنصرية، مبرمج متخصص، ومقدم خدمات متنوعة. أعمل كمندوب منذ سنتين وأسعى لتقديم أفضل الخدمات للعملاء.</p>
+                    <div class="badges">
+                        <span class="badge blue">طالب طب</span>
+                        <span class="badge green">مبرمج</span>
+                        <span class="badge purple">مندوب خبير</span>
+                        <span class="badge orange">مقدم خدمات</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="skills-section">المهارات والخبرات</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h4>البرمجة</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 90%;"></div>
+                    </div>
+                    <span>90%</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-user-md skill-icon"></i>
+                    <h4>الطب</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <span>85%</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-language skill-icon"></i>
+                    <h4>اللغة الإنجليزية</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 88%;"></div>
+                    </div>
+                    <span>88%</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-comments skill-icon"></i>
+                    <h4>مهارات التواصل</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 92%;"></div>
+                    </div>
+                    <span>92%</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-award skill-icon"></i>
+                    <h4>القيادة</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 87%;"></div>
+                    </div>
+                    <span>87%</span>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-book-open skill-icon"></i>
+                    <h4>التعليم</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 89%;"></div>
+                    </div>
+                    <span>89%</span>
+                </div>
+            </div>
+
+            <h3 class="experience-section">الخبرة العملية</h3>
+            <div class="experience-section">
+                <div class="experience-item">
+                    <div class="experience-icon-wrapper blue">
+                        <i class="fas fa-stethoscope experience-icon"></i>
+                    </div>
+                    <div class="experience-text">
+                        <h4>طالب طب - جامعة المستنصرية</h4>
+                        <p>دراسة الطب والتخصص في المجال الطبي مع التركيز على التميز الأكاديمي</p>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-icon-wrapper green">
+                        <i class="fas fa-briefcase experience-icon"></i>
+                    </div>
+                    <div class="experience-text">
+                        <h4>مندوب - سنتان من الخبرة</h4>
+                        <p>خبرة واسعة في التعامل مع العملاء وتقديم الخدمات المتميزة</p>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-icon-wrapper purple">
+                        <i class="fas fa-laptop-code experience-icon"></i>
+                    </div>
+                    <div class="experience-text">
+                        <h4>مبرمج ومطور</h4>
+                        <p>تطوير التطبيقات والمواقع الإلكترونية باستخدام أحدث التقنيات</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>تواصل معنا</h2>
+            <p>نحن هنا لخدمتكم على مدار الساعة. تواصلوا معنا عبر القنوات التالية</p>
+
+            <div class="social-links-grid">
+                <div class="social-card">
+                    <div class="social-icon-wrapper telegram">
+                        <i class="fab fa-telegram-plane social-icon"></i>
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>@ha_20_ha</p>
+                    <a href="https://t.me/ha_20_ha" target="_blank" class="social-button">تواصل الآن</a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon-wrapper facebook">
+                        <i class="fab fa-facebook-f social-icon"></i>
+                    </div>
+                    <h3>Facebook</h3>
+                    <p>صفحة الفيسبوك</p>
+                    <a href="#" class="social-button">تواصل الآن</a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon-wrapper instagram">
+                        <i class="fab fa-instagram social-icon"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>انستغرام</p>
+                    <a href="#" class="social-button">تواصل الآن</a>
+                </div>
+                <div class="social-card">
+                    <div class="social-icon-wrapper linkedin">
+                        <i class="fab fa-linkedin-in social-icon"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>لينكد إن</p>
+                    <a href="#" class="social-button">تواصل الآن</a>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>أرسل رسالة</h3>
+                <form>
+                    <div class="form-group grid">
+                        <input type="text" placeholder="الاسم الكامل" required>
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="الموضوع" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="الرسالة" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">إرسال الرسالة</button>
+                </form>
+            </div>
+
+            <div class="quick-contact-grid">
+                <div class="quick-contact-card">
+                    <i class="fas fa-phone quick-contact-icon"></i>
+                    <h4>اتصل بنا</h4>
+                    <p>+964 XXX XXX XXXX</p>
+                </div>
+                <div class="quick-contact-card">
+                    <i class="fas fa-envelope quick-contact-icon"></i>
+                    <h4>راسلنا</h4>
+                    <p>info@albayati.com</p>
+                </div>
+                <div class="quick-contact-card">
+                    <i class="fas fa-map-marker-alt quick-contact-icon"></i>
+                    <h4>موقعنا</h4>
+                    <p>بغداد، العراق</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Site Section -->
+        <section id="about-site">
+            <h2>حول الموقع</h2>
+            <p>موقع خدمات البياتي هو منصة شاملة تهدف إلى تقديم مجموعة متنوعة من الخدمات المتخصصة والمهنية</p>
+
+            <div class="about-site-content">
+                <div class="about-site-text">
+                    <h3>رؤيتنا</h3>
+                    <p>نسعى لأن نكون الخيار الأول للعملاء في الحصول على خدمات متميزة وموثوقة في جميع المجالات التي نقدمها.</p>
+
+                    <h3>مهمتنا</h3>
+                    <p>تقديم خدمات عالية الجودة تلبي احتياجات عملائنا وتتجاوز توقعاتهم من خلال فريق متخصص ومتفان.</p>
+                </div>
+
+                <div class="about-site-features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-globe feature-icon"></i>
+                        <h4>خدمات شاملة</h4>
+                        <p>نقدم مجموعة واسعة من الخدمات لتلبية جميع احتياجاتكم</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-award feature-icon"></i>
+                        <h4>جودة عالية</h4>
+                        <p>نلتزم بأعلى معايير الجودة في جميع خدماتنا</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h4>فريق متخصص</h4>
+                        <p>فريق من المتخصصين ذوي الخبرة والكفاءة العالية</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="placeholder-content">
+                <h3>المزيد من المعلومات</h3>
+                <p>هذا القسم جاهز لإضافة المزيد من المعلومات حول الموقع والخدمات</p>
+                <div class="note">
+                    "سيتم ملء هذا القسم لاحقاً بالمعلومات الإضافية التي تريد إضافتها"
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
             <div>
-              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                خدمات البياتي
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                نقدم خدمات متميزة ومتنوعة لتلبية جميع احتياجاتكم بأعلى معايير الجودة والمهنية.
-              </p>
+                <h3>خدمات البياتي</h3>
+                <p>نقدم خدمات متميزة ومتنوعة لتلبية جميع احتياجاتكم بأعلى معايير الجودة والمهنية.</p>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">خدماتنا</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li>العلاج الطبيعي</li>
-                <li>خدمات النقل</li>
-                <li>صيانة الأجهزة</li>
-                <li>الدورات التعليمية</li>
-              </ul>
+                <h4>خدماتنا</h4>
+                <ul>
+                    <li>العلاج الطبيعي</li>
+                    <li>خدمات النقل</li>
+                    <li>صيانة الأجهزة</li>
+                    <li>الدورات التعليمية</li>
+                </ul>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4">تواصل معنا</h4>
-              <div className="flex space-x-4 space-x-reverse">
-                {socialLinks.map((link, index) => {
-                  const IconComponent = link.icon
-                  return (
-                    <a
-                      key={index}
-                      href={link.url}
-                      className={`w-10 h-10 rounded-full ${link.color} flex items-center justify-center transition-transform duration-300 hover:scale-110`}
-                    >
-                      <IconComponent className="w-5 h-5 text-white" />
+                <h4>تواصل معنا</h4>
+                <div class="footer-social-links">
+                    <a href="https://t.me/ha_20_ha" target="_blank" class="footer-social-link telegram">
+                        <i class="fab fa-telegram-plane"></i>
                     </a>
-                  )
-                })}
-              </div>
+                    <a href="#" class="footer-social-link facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-link linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
             </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 خدمات البياتي. جميع الحقوق محفوظة.</p>
-          </div>
         </div>
-      </footer>
-    </div>
-  )
-}
+
+        <div class="container footer-bottom">
+            <p>&copy; 2024 خدمات البياتي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-button');
+            const sections = document.querySelectorAll('section');
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and sections
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    sections.forEach(sec => sec.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    // Show the corresponding section
+                    const targetSectionId = button.dataset.section;
+                    const targetSection = document.getElementById(targetSectionId);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+
+            // Optional: Smooth scroll for hero button
+            const heroButton = document.querySelector('.hero-button');
+            if (heroButton) {
+                heroButton.addEventListener('click', () => {
+                    const servicesSection = document.querySelector('.services-grid');
+                    if (servicesSection) {
+                        servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
